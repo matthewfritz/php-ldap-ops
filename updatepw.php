@@ -35,7 +35,7 @@ $oldpw = "1234";
 $newpw = "1234";
 $newpwhash = generatePassword($newpw);
 
-// userPassword:: {SSHA}ro/jgN2apaepVtkIX+fPa4fQ0Cg= (3456 as SSHA)
+// userPassword:: {SSHA}QMlUZLfqzdtVcq9UaP+xzbWxPzVzYWx0 (1234 as SSHA)
 $persondata = [
 	'userPassword' => $newpwhash,
 ];

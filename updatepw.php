@@ -26,11 +26,12 @@ function generatePassword($password, $salt="salt") {
 
 // user uid, overlay DN (bind DN for user), and user DN
 $personuid = "oc4fanmatt4";
-$overlaydn = $config['base_dn'] . "," . $config['overlay_dn'];
+$overlaydn = $config['base_dn'] .
+	(!empty($config['overlay_dn']) ? "," . $config['overlay_dn'] : "");
 $persondn = "uid={$personuid}," . $overlaydn;
 
 // old password and new password
-$oldpw = "3456";
+$oldpw = "1234";
 $newpw = "1234";
 $newpwhash = generatePassword($newpw);
 
@@ -63,7 +64,7 @@ if($bind) {
 	else
 	{
 		ldap_get_option($conn, LDAP_OPT_DIAGNOSTIC_MESSAGE, $err);
-		die("LDAP add failed: " . ldap_error($conn) . " - $err");
+		die("LDAP modify failed: " . ldap_error($conn) . " - $err");
 	}
 }
 else

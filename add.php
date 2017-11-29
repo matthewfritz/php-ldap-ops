@@ -13,7 +13,8 @@ $config = require_once("common.php");
 
 // new person uid, overlay DN, and DN
 $personuid = "oc4fanmatt4";
-$overlaydn = $config['base_dn'] . "," . $config['overlay_dn'];
+$overlaydn = $config['base_dn'] .
+	(!empty($config['overlay_dn']) ? "," . $config['overlay_dn'] : "");
 $persondn = "uid={$personuid}," . $config['base_dn'];
 
 // new person data
